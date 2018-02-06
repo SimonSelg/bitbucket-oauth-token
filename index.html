@@ -1,14 +1,23 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Generaete Bitbucket Oauth token</title>
+  <title>Generate Bitbucket OAuth Token</title>
+  <style>
+    body { text-align: center; padding: 150px; }
+    h1 { font-size: 50px; }
+    body { font: 20px Helvetica, sans-serif; color: #333; }
+    a { color: #dc8100; text-decoration: none; }
+    a:hover { color: #333; text-decoration: none; }
+  </style>
 </head>
 
 <body>
-  <h1>Bitbucket Oauth Token generator</h1>
-  <h3>Bitbucket OAuth tokens are explained <a href="https://confluence.atlassian.com/bitbucket/oauth-on-bitbucket-cloud-238027431.html#OAuthonBitbucketCloud-Refreshtokens">here</a>.
+  <h1>Bitbucket OAuth Token Generator</h1>
+  <h3>Bitbucket OAuth Tokens are explained <a href="https://confluence.atlassian.com/bitbucket/oauth-on-bitbucket-cloud-238027431.html#OAuthonBitbucketCloud-Refreshtokens">here</a>.
   <br /> <br />
-  <p>Go to https://bitbucket.org/account/user/&#x3C;your bitbucket username&#x3E;/oauth-consumers/new to generate a new oauth consumer. Use the url of this site as url. Then paste the key of the consumer here:</p>
+  <p>Go to https://bitbucket.org/account/user/&#x3C;your bitbucket username&#x3E;/oauth-consumers/new to generate a new oauth consumer. Use the url of this site as url. In the Section "Permissions", activate the "read" checkbox next to "repositories".
+  <br /><br />
+  Then paste the key of the consumer here:</p>
   <input id="key" placeholder="key"></input>
   <button onclick="window.getToken()">get token</button>
   <div id="result" style="display:none">
