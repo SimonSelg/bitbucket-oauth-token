@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Generaete Bitbucket Oauth token</title>
+</head>
+
+<body>
+  <h1>Bitbucket Oauth Token generator</h1>
+  <h3>Bitbucket OAuth tokens are explained <a href="https://confluence.atlassian.com/bitbucket/oauth-on-bitbucket-cloud-238027431.html#OAuthonBitbucketCloud-Refreshtokens">here</a>.
+  <br /> <br />
+  <p>Go to https://bitbucket.org/account/user/&#x3C;your bitbucket username&#x3E;/oauth-consumers/new to generate a new oauth consumer. Use the url of this site as url. Then paste the key of the consumer here:</p>
+  <input id="key" placeholder="key"></input>
+  <button onclick="window.getToken()">get token</button>
+  <div id="result" style="display:none">
+    <h3>Result:</h3>
+    <code id="token"></code>
+  </div>
+  <script type="text/javascript">
+    if(window.location.hash) {
+      regexp = /#access_token=(.+?)&/
+      res = regexp.exec(window.location.hash)
+      if (res.length > 1) {
+        token = decodeURIComponent(res[1])
+        document.getElementById("token").innerHTML = token
+        document.getElementById("result").style.display = "block"
+        history.pushState("", document.title, window.location.pathname);
+      }
+    }
+    window.getToken = function(e) {
+      value = document.getElementById("key").value
+      url = "https://bitbucket.org/site/oauth2/authorize?client_id=" + value +  "&response_type=token"
+      window.location = url
+    }
+  </script>
+</body>
+</html>
